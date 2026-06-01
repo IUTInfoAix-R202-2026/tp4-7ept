@@ -2,7 +2,6 @@ package fr.univ_amu.iut.exercice3;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -14,7 +13,7 @@ import org.junit.jupiter.api.Test;
  */
 class FormulaireConnexionViewModelTest {
 
-  //@Disabled("Retire cette annotation pour activer le test")
+  // @Disabled("Retire cette annotation pour activer le test")
   @Test
   void le_formulaire_n_est_pas_validable_au_demarrage() {
     FormulaireConnexionViewModel vm =
