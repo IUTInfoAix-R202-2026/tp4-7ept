@@ -5,8 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test de l'exercice 2 : la logique du compteur se vérifie intégralement sans interface graphique.
- * Chaque commande est appelée directement sur le ViewModel et on observe le {@code message}.
+ * Test de l'exercice 2 : la logique du compteur se vérifie intégralement sans
+ * interface graphique.
+ * Chaque commande est appelée directement sur le ViewModel et on observe le
+ * {@code message}.
  */
 class CompteurViewModelTest {
 
@@ -55,12 +57,10 @@ class CompteurViewModelTest {
   }
 
   // @Disabled("Retire cette annotation pour activer le test")
-  @Test
-  void reinitialiser_remet_le_compteur_a_zero() {
-    CompteurViewModel vm = new CompteurViewModel(new Compteur());
 
-    vm.incrementerCommand();
-    vm.incrementerCommand();
+  id reinitialiser_remet_lCompteurViewModel vm = n
+
+  vm.incrementerCommand();
     vm.reinitialiserCommand();
 
     assertThat(vm.messageProperty().get()).isEqualTo("Compteur à 0");
