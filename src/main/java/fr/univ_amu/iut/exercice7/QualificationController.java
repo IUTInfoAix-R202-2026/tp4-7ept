@@ -56,15 +56,39 @@ public class QualificationController {
     //
     // 1. Colonnes (cell value factory) : horodatage (HH:mm), fréquence (%.1f kHz),
     //    durée (en s), statut.
+    colHorodatage.setCellValueFactory(
+        c ->
+            new javafx.beans.property.SimpleStringProperty(
+                c.getValue().getHorodatage().format(HEURE)));
+    colFrequence.setCellValueFactory(
+        c ->
+            new javafx.beans.property.SimpleStringProperty(
+                String.format("%.1f kHz", c.getValue().getFrequenceDominanteKHz())));
+    colDuree.setCellValueFactory(
+        c ->
+            new javafx.beans.property.SimpleStringProperty(c.getValue().getDureeSecondes() + " s"));
+    colStatut.setCellValueFactory(
+        c -> new javafx.beans.property.SimpleStringProperty(c.getValue().getStatut()));
+
     // 2. tableSequences.setItems(viewModel.sequencesProperty());
+    tableSequences.setItems(viewModel.sequencesProperty());
     // 3. Relayer la sélection : viewModel.sequenceSelectionneeProperty()
     //       .bind(tableSequences.getSelectionModel().selectedItemProperty());
+    viewModel
+        .sequenceSelectionneeProperty()
+        .bind(tableSequences.getSelectionModel().selectedItemProperty());
     // 4. labelSelection <- descriptionSelectionProperty (sens unique).
+    labelSelection.textProperty().bind(viewModel.descriptionSelectionProperty());
     // 5. boutonEcouter désactivé quand rien n'est sélectionné :
     //       boutonEcouter.disableProperty().bind(viewModel.peutEcouterProperty().not());
+    boutonEcouter.disableProperty().bind(viewModel.peutEcouterProperty().not());
     // 6. zoneCommentaire <-> commentaireProperty (bidirectionnel).
+    zoneCommentaire.textProperty().bindBidirectional(viewModel.commentaireProperty());
     // 7. choiceVerdict : items = viewModel.listeVerdicts(), valeur <-> verdictSaisiProperty.
+    choiceVerdict.getItems().setAll(viewModel.listeVerdicts());
+    choiceVerdict.valueProperty().bindBidirectional(viewModel.verdictSaisiProperty());
     // 8. labelVerdictGlobal <- verdictGlobalLibelleProperty.
+    labelVerdictGlobal.textProperty().bind(viewModel.verdictGlobalLibelleProperty());
   }
 
   @FXML
