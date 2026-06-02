@@ -69,7 +69,7 @@ public class FormulaireConnexionViewModel {
     //    - succès : "Bienvenue " + identifiant + " !"
     //    - échec  : "Identifiants incorrects. Vérifiez votre saisie."
     statut.setValue("Connexion en cours...");
-    
+
     if (serviceAuth.connecter(identifiant.getValue(), motDePasse.getValue())) {
       statut.setValue("Bienvenue " + identifiant.getValue() + " !");
     } else {
